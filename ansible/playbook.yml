@@ -1,0 +1,46 @@
+---
+# Playbook file
+
+- name: osx
+  hosts: laptop
+  roles:
+    - osx
+  tags:
+    - osx
+
+- name: brew
+  hosts: laptop
+  roles:
+    - brew
+  tags:
+    - brew
+
+- name: casks
+  hosts: laptop
+  roles:
+    - casks
+  tags:
+    - casks
+
+- name: dotfiles
+  hosts: laptop
+  roles:
+    - dotfiles
+  tags:
+    - dotfiles
+
+- name: vimfiles
+  hosts: laptop
+  roles:
+    - vimfiles
+  tags:
+    - vimfiles
+
+- name: mas
+  hosts: laptop
+  vars_files:
+    - vars/vars_file.yml
+  roles: 
+    - mas
+  tags:
+    - mas

@@ -1,0 +1,18 @@
+---
+# brew playbook
+
+- include: install_homebrew.yml
+  tags: bootstrap
+
+- name: "update Homebrew"
+  homebrew: state=latest
+  tags: update
+
+- name: "Install all latest Homebrew packages"
+  homebrew: name="{{item.package}}" install_options="{{item.options | default("") }}" state=latest
+  with_items: "{{brew.packages}}"
+  tags: allbrewpackages
+
+- name: "Install the mimimum Homebrew packages"
+  homebrew: name="{{item.package}}" install_options="{{item.options | default("") }}" state=latest
+  with_items: "{{brew.packages_min}}"

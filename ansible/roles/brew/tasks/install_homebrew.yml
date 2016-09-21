@@ -1,0 +1,44 @@
+---
+# install_homebrew
+
+- name: "create Homebrew path"
+  file: path=/usr/local/Homebrew state=directory owner="{{ install_user }}" group=staff
+  become: true
+
+- name: "homebrew permissions"
+  file: path=/usr/local state=directory owner="{{ install_user }}" group=staff
+  become: true
+
+- name: "homebrew permissions"
+  file: path=/usr/local/bin state=directory owner="{{ install_user }}" group=staff
+  become: true
+
+- name: "Homebrew init"
+  command: git init -q
+  args:
+    chdir: /usr/local/Homebrew
+    creates: /usr/local/Homebrew/.git
+
+- name: "Homebrew origin"
+  command: git config remote.origin.url https://github.com/Homebrew/brew.git
+  args:
+    chdir: /usr/local/Homebrew
+
+- name: "Homebrew fetch"
+  command: git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+  args:
+    chdir: /usr/local/Homebrew
+
+- name: "Homebrew fetch master"
+  command: "git fetch origin master:refs/remotes/origin/master -n --depth=1"
+  args:
+    chdir: /usr/local/Homebrew
+
+- name: "Homebrew reset"
+  command: "git reset --hard origin/master"
+  args:
+    chdir: /usr/local/Homebrew
+
+- name: "Link Brew"
+  file: src=/usr/local/Homebrew/bin/brew dest=/usr/local/bin/brew state=link owner="{{ install_user }}" group=staff
+  become: true

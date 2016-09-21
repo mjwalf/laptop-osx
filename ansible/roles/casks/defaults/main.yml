@@ -1,0 +1,23 @@
+---
+# properties
+
+casks:
+  taps:
+    - caskroom/homebrew-cask
+    - caskroom/homebrew-versions
+
+  packages_min:
+    - slack-beta
+    - visual-studio-code
+    - 1password
+    - iterm2-beta
+  packages:
+    - dropbox
+    - google-chrome
+ #   - google-hangouts
+ #   - hipchat
+    - the-unarchiver
+    - viscosity
+ #   - vmware-fusion
+ #   - skype
+    - google-cloud-sdk
