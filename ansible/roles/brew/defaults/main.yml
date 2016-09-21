@@ -1,0 +1,26 @@
+---
+# properties
+
+brew:
+  packages:
+    - package: "autoconf"
+    - package: "automake"
+    - package: "awscli"
+    - package: "bash"
+    - package: "ctags"
+    - package: "curl"
+    - package: "docker"
+    - package: "git"
+    - package: "go"
+    - package: "jq"
+    - package: "libtool"
+    - package: "mercurial"
+    - package: "openssl"
+    - package: "packer"
+    - package: "reattach-to-user-namespace"
+    - package: "terraform"
+    - package: "the_silver_searcher"
+    - package: "tmux"
+    - package: "vim"
+      options: "override-system-vi"
+    - package: "zsh"

@@ -1,0 +1,19 @@
+---
+# properties
+
+casks:
+  taps:
+    - "caskroom/cask"
+    - "caskroom/versions"
+
+  packages:
+    - "dropbox"
+    - "slack-beta"
+    - "visual-studio-code"
+    - "google-chrome"
+    - "google-hangouts"
+    - "hipchat"
+    - "iterm2-beta"
+    - "little-snitch"
+    - "viscosity"
+    - "1password"
