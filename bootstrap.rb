@@ -2,7 +2,7 @@
 
 require "FileUtils"
 
-INSTALL_DIR = "#{Dir.home}/Developer/config/src/github.com/sthulb/laptop-osx"
+INSTALL_DIR = "#{Dir.home}/Developer/config/src/bitbucket.org/mjwalf/laptop-osx"
 
 module Tty extend self
   def blue; bold 34; end
@@ -75,7 +75,7 @@ module Bootstrap extend self
       system "git", "init", "-q"
 
       # "git remote add" will fail if the remote is defined in the global config
-      system "git", "config", "remote.origin.url", "https://github.com/sthulb/laptop-osx.git"
+      system "git", "config", "remote.origin.url", "https://mjwalf@bitbucket.org/mjwalf/laptop-osx.git"
       system "git", "config", "remote.origin.fetch", "+refs/heads/*:refs/remotes/origin/*"
 
       system "git", "fetch", "origin", "master:refs/remotes/origin/master", "-n"
@@ -97,7 +97,7 @@ end
 puts <<LULZ
 Welcome!
 
-This is my (sthulb's) provisioning script, to provision a working developer environment"
+This is my (sthulb's) provisioning scriptHACKEDINTHEWORSTWAY, to provision a working developer environment"
 LULZ
 
 puts

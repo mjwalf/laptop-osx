@@ -10,6 +10,7 @@
     - { path: "tmux.conf", dest: ".tmux.conf" }
     - { path: "gitconfig", dest: ".gitconfig" }
     - { path: "zsh/zshrc", dest: ".zshrc" }
+    - { path: "oh-my-zsh/zshrc", dest: ".oh-my-zsh" }
 
 - name: "Install font"
   file: src="/Users/{{install_user}}/.dotfiles/fonts/Droid Sans Mono for Powerline.otf" dest="/Users/{{install_user}}/Library/Fonts/Droid Sans Mono for Powerline.otf" state=link
