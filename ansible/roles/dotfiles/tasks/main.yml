@@ -2,7 +2,7 @@
 # dotfiles playbook
 
 - name: "Clone dotfiles"
-  git: repo=git@bitbucket.org:mjwalf/dotfiles.git dest=/Users/{{install_user}}/.dotfiles recursive=yes
+  git: repo=https://mjwalf@bitbucket.org/mjwalf/dotfiles.git dest=/Users/{{install_user}}/.dotfiles recursive=yes
 
 - name: "Link files"
   file: src=/Users/{{install_user}}/.dotfiles/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link
@@ -11,6 +11,7 @@
     - { path: "gitconfig", dest: ".gitconfig" }
     - { path: "zsh/zshrc", dest: ".zshrc" }
     - { path: "oh-my-zsh/zshrc", dest: ".oh-my-zsh" }
+    - { path: "/Users/mjwalf/Documents/.dotfiles/.common_env", dest: ".common_env" }
 
 - name: "Install font"
   file: src="/Users/{{install_user}}/.dotfiles/fonts/Droid Sans Mono for Powerline.otf" dest="/Users/{{install_user}}/Library/Fonts/Droid Sans Mono for Powerline.otf" state=link
