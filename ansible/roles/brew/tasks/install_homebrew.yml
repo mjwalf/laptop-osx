@@ -13,20 +13,24 @@
   command: git init -q
   args:
     chdir: /usr/local
-    creates: /usr/local/.git
+    creates: /usr/local/Homebrew/.git
 
 - name: "Homebrew origin"
   command: git config remote.origin.url https://github.com/Homebrew/brew.git
   args:
-    chdir: /usr/local
+    chdir: /usr/local/Homebrew
+
+- name: "Homebrew fetch"
+  command: git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+  args:
+    chdir: /usr/local/Homebrew
 
 - name: "Homebrew fetch master"
-  command: "git fetch origin master"
+  command: "git fetch origin master:refs/remotes/origin/master -n --depth=1"
   args:
-    chdir: /usr/local
+    chdir: /usr/local/Homebrew
 
 - name: "Homebrew reset"
-  command: "git reset --hard"
+  command: "git reset --hard origin/master"
   args:
-    chdir: /usr/local
-
+    chdir: /usr/local/Homebrew
