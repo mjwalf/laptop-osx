@@ -10,8 +10,20 @@
     - { path: "tmux.conf", dest: ".tmux.conf" }
     - { path: "gitconfig", dest: ".gitconfig" }
     - { path: "zsh/zshrc", dest: ".zshrc" }
-    - { path: "oh-my-zsh/zshrc", dest: ".oh-my-zsh" }
-    - { path: "/Users/mjwalf/Documents/.dotfiles/.common_env", dest: ".common_env" }
+
+- name: "Link secrets" #TODO change to secure location
+  file: src=/Users/{{install_user}}/Documents/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link
+  with_items:
+    - { path: ".dotfiles/.common_env", dest: ".common_env" }
+    - { path: ".dotfiles/.localsecrets", dest: ".localsecrets" }
+
+- name: "Clone oh-my-zsh robbyrussell"
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/Users/{{install_user}}/oh-my-zsh recursive=yes
+
+- name: "Link oh-my-zsh"
+  file: src=/Users/{{install_user}}/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link
+  with_items:
+    - { path: "oh-my-zsh", dest: ".oh-my-zsh" }
 
 - name: "Install font"
   file: src="/Users/{{install_user}}/.dotfiles/fonts/Droid Sans Mono for Powerline.otf" dest="/Users/{{install_user}}/Library/Fonts/Droid Sans Mono for Powerline.otf" state=link
