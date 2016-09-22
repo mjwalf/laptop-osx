@@ -4,9 +4,6 @@
 - include: install_homebrew.yml
 
 - name: "update Homebrew"
-  homebrew: update_homebrew=yes
-
-- name: "update Homebrew"
   homebrew: state=latest
 
 - name: "Install Homebrew packages"
