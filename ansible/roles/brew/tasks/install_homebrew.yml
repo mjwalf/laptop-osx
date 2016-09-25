@@ -30,3 +30,6 @@
   command: "git reset --hard origin/master"
   args:
     chdir: /usr/local/Homebrew
+
+- name: "Copy brew"
+  copy: src=/usr/local/Homebrew/bin/brew dest=/usr/local/bin/brew
