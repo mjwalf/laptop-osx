@@ -16,7 +16,6 @@ brew:
     - package: "libtool"
     - package: "mercurial"
     - package: "openssl"
-    - package: "packer"
     - package: "reattach-to-user-namespace"
     - package: "terraform"
     - package: "the_silver_searcher"
