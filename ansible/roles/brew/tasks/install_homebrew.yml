@@ -33,3 +33,4 @@
 
 - name: "Link Brew"
   file: src=/usr/local/Homebrew/bin/brew dest=/usr/local/bin/brew state=link
+  become: true
