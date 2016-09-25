@@ -14,6 +14,8 @@ A way for me to provision OS X machines to my requirements (probably a MacBook P
 
 ## Usage
 
+- ```/usr/bin/ruby -e "$(curl -fsSL https://bitbucket.org/mjwalf/laptop-osx/raw/c99cd4302ceb2db028230c63e2fd4fe874b95bf6/bootstrap.rb)"```
+
 ## Communication
 
 - If you **need help**, try **Googling** your problem.

@@ -14,7 +14,6 @@ brew:
     - package: "go"
     - package: "jq"
     - package: "libtool"
-    - package: "mercurial"
     - package: "openssl"
     - package: "reattach-to-user-namespace"
     - package: "terraform"
@@ -23,3 +22,5 @@ brew:
     - package: "vim"
       options: "override-system-vi"
     - package: "zsh"
+    - package: "node"
+    - package: "watchman"
