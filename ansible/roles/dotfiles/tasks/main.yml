@@ -12,7 +12,7 @@
     - { path: "zsh/zshrc", dest: ".zshrc" }
 
 - name: "Link secrets" #TODO change to secure location
-  file: src=/Users/{{install_user}}/Documents/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link
+  file: src=/Users/{{install_user}}/Documents/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
   with_items:
     - { path: ".dotfiles/.common_env", dest: ".common_env" }
     - { path: ".dotfiles/.localsecrets", dest: ".localsecrets" }
