@@ -5,6 +5,14 @@
   file: path=/usr/local/Homebrew state=directory owner={{ install_user }} group=staff
   become: true
 
+- name: "homebrew permissions"
+  file: path=/usr/local state=directory owner={{ install_user }} group=staff
+  become: true
+
+- name: "homebrew permissions"
+  file: path=/usr/local/bin state=directory owner={{ install_user }} group=staff
+  become: true
+
 - name: "Homebrew init"
   command: git init -q
   args:
