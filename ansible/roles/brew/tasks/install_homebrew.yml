@@ -32,5 +32,5 @@
     chdir: /usr/local/Homebrew
 
 - name: "Link Brew"
-  file: src=/usr/local/Homebrew/bin/brew dest=/usr/local/bin/brew state=link
+  file: src=/usr/local/Homebrew/bin/brew dest=/usr/local/bin/brew state=link owner={{ install_user }} group=staff
   become: true
