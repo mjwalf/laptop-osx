@@ -15,13 +15,19 @@
   hosts: laptop
   roles:
     - casks
+  tags:
+    - update
 
 - name: dotfiles
   hosts: laptop
   roles:
     - dotfiles
+  tags:
+    - update
 
 - name: vimfiles
   hosts: laptop
   roles:
     - vimfiles
+  tags:
+    - update
