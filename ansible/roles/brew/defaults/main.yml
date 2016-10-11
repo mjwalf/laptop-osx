@@ -24,3 +24,4 @@ brew:
     - package: "zsh"
     - package: "node"
     - package: "watchman"
+    - package: "python3"

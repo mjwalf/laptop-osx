@@ -12,7 +12,6 @@ casks:
     - "visual-studio-code"
     - "google-chrome"
     - "google-hangouts"
-    - "google-cloud-sdk"
     - "hipchat"
     - "iterm2-beta"
     - "the-unarchiver"
@@ -20,4 +19,4 @@ casks:
     - "1password"
     - "vmware-fusion"
     - "skype"
-    - "microsoft-office"
+    - "google-cloud-sdk"
