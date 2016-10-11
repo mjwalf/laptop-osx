@@ -27,3 +27,4 @@ brew:
     - package: "python3"
     - package: "pyenv"
     - package: "pyenv-virtualenv"
+    - package: "mas"

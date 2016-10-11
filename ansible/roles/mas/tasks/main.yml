@@ -1,0 +1,11 @@
+---
+# Appstore playbook using MAS
+
+- name: "Install appstore packages"
+  command: mas install "{{item}}"
+  with_items: mas.packages
+  tags: mas
+
+- name: "upgrade all appstore packages"
+  command: mas upgrade
+  tags: mas

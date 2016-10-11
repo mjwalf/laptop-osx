@@ -1,0 +1,6 @@
+---
+# packages to be installed by mas
+
+mas:
+  packages:
+    - "715768417"

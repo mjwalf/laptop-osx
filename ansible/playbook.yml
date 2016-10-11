@@ -31,3 +31,10 @@
     - vimfiles
   tags:
     - update
+
+- name: mas
+  hosts: laptop
+  roles:
+    - mas
+  tags:
+    - mas
