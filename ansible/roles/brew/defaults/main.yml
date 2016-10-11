@@ -25,3 +25,5 @@ brew:
     - package: "node"
     - package: "watchman"
     - package: "python3"
+    - package: "pyenv"
+    - package: "pyenv-virtualenv"
