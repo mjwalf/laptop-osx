@@ -4,8 +4,9 @@
 - name: "Install appstore packages"
   command: mas install "{{item}}"
   with_items: mas.packages
-  tags: mas
+  tags: mas, balls
 
 - name: "upgrade all appstore packages"
-  command: mas upgrade
-  tags: mas
+  command: mas upgrade "{{item}}"
+  with_items: mas.packages
+  tags: mas, update, test

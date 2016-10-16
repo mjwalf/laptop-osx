@@ -3,4 +3,5 @@
 
 mas:
   packages:
-    - "715768417"
+    #- "715768417" # Microsoft Remote Desktop
+    - "937984704" # Amphetamine

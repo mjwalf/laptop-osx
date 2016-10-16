@@ -5,10 +5,14 @@
   hosts: laptop
   roles:
     - osx
+  tags:
+    - osx
 
 - name: brew
   hosts: laptop
   roles:
+    - brew
+  tags:
     - brew
 
 - name: casks
@@ -16,21 +20,21 @@
   roles:
     - casks
   tags:
-    - update
+    - casks
 
 - name: dotfiles
   hosts: laptop
   roles:
     - dotfiles
   tags:
-    - update
+    - dotfiles
 
 - name: vimfiles
   hosts: laptop
   roles:
     - vimfiles
   tags:
-    - update
+    - vimfiles
 
 - name: mas
   hosts: laptop
