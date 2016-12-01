@@ -28,3 +28,4 @@ brew:
     - package: "pyenv"
     - package: "pyenv-virtualenv"
     - package: "mas"
+    - package: "m-cli"
