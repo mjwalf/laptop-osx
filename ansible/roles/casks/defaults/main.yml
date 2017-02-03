@@ -3,20 +3,20 @@
 
 casks:
   taps:
-    - "caskroom/cask"
-    - "caskroom/versions"
+    - caskroom/homebrew-cask
+    - caskroom/homebrew-versions
 
   packages:
-    - "dropbox"
-    - "slack-beta"
-    - "visual-studio-code"
-    - "google-chrome"
-    - "google-hangouts"
-    - "hipchat"
-    - "iterm2-beta"
-    - "the-unarchiver"
-    - "viscosity"
-    - "1password"
-    - "vmware-fusion"
-    - "skype"
-    - "google-cloud-sdk"
+    - dropbox
+    - slack-beta
+    - visual-studio-code
+    - google-chrome
+    - google-hangouts
+    - hipchat
+    - iterm2-beta
+    - the-unarchiver
+    - viscosity
+    - 1password
+    - vmware-fusion
+    - skype
+    - google-cloud-sdk
