@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-=======
 ---
 # osx playbook
 
 - name: "OS X Preferences"
   command: defaults write "{{item.domain}}" "{{item.key}}" "{{item.value}}"
-  with_items: osx.prefs
+  with_items: "{{osx.prefs}}"
   become: true
   become_user: "{{install_user}}"
 
@@ -15,4 +13,3 @@
     - "Dock"
     - "Finder"
     - "SystemUIServer"
->>>>>>> fixed syntax for variables in ansible2

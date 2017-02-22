@@ -8,11 +8,6 @@
   tags: update
 
 - name: "Install Homebrew packages"
-<<<<<<< HEAD
-  homebrew: name={{item.package}} install_options={{item.options | default("") }} state=latest
-  with_items: "{{ brew.packages }}"
-=======
   homebrew: name="{{item.package}}" install_options="{{item.options | default("") }}" state=latest
-  with_items: brew.packages
->>>>>>> fixed syntax for variables in ansible2
+  with_items: "{{brew.packages}}"
   tags: update
