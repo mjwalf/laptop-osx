@@ -2,15 +2,15 @@
 # install_homebrew
 
 - name: "create Homebrew path"
-  file: path=/usr/local/Homebrew state=directory owner={{ install_user }} group=staff
+  file: path=/usr/local/Homebrew state=directory owner="{{ install_user }}" group=staff
   become: true
 
 - name: "homebrew permissions"
-  file: path=/usr/local state=directory owner={{ install_user }} group=staff
+  file: path=/usr/local state=directory owner="{{ install_user }}" group=staff
   become: true
 
 - name: "homebrew permissions"
-  file: path=/usr/local/bin state=directory owner={{ install_user }} group=staff
+  file: path=/usr/local/bin state=directory owner="{{ install_user }}" group=staff
   become: true
 
 - name: "Homebrew init"
@@ -40,5 +40,5 @@
     chdir: /usr/local/Homebrew
 
 - name: "Link Brew"
-  file: src=/usr/local/Homebrew/bin/brew dest=/usr/local/bin/brew state=link owner={{ install_user }} group=staff
+  file: src=/usr/local/Homebrew/bin/brew dest=/usr/local/bin/brew state=link owner="{{ install_user }}" group=staff
   become: true

@@ -2,8 +2,13 @@
 # cask playbook
 
 - name: "Tap Homebrew repos"
+<<<<<<< HEAD
   homebrew_tap: name={{item}} state=present
   with_items: "{{ casks.taps }}"
+=======
+  homebrew_tap: name="{{item}}" state=present
+  with_items: casks.taps
+>>>>>>> fixed syntax for variables in ansible2
 
 - name: "update Homebrew"
   homebrew: update_homebrew=yes
@@ -12,7 +17,7 @@
   homebrew: state=latest
 
 - name: "Install Casks"
-  homebrew_cask: name={{item}} state=present
+  homebrew_cask: name="{{item}}" state=present
   environment:
     HOMEBREW_CASK_OPTS: "--appdir=/Applications"
   with_items: "{{ casks.packages }}"

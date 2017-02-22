@@ -33,5 +33,5 @@
   become: true
 
 - name: "change shell"
-  command: chsh -s /usr/local/bin/zsh {{install_user}}
+  command: chsh -s /usr/local/bin/zsh "{{install_user}}"
   become: true
