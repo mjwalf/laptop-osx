@@ -4,9 +4,9 @@
 osx:
   prefs:
     # Global Preferences
-    # - key: AppleScrollerPagingBehavior
-    #   value: 1
-    #   domain: NSGlobalDomain
+    - key: AppleScrollerPagingBehavior
+      value: 1
+      domain: NSGlobalDomain
     - key: KeyRepeat
       value: -int 1
       domain: NSGlobalDomain
@@ -16,12 +16,12 @@ osx:
     - key: ApplePressAndHoldEnabled
       value: -bool false
       domain: NSGlobalDomain
-    # - key: com.apple.springing.enabled
-    #   value: -bool true
-    #   domain: NSGlobalDomain
-    # - key: AppleKeyboardUIMode
-    #   value: -int 3
-    #   domain: NSGlobalDomain
+    - key: com.apple.springing.enabled
+      value: -bool true
+      domain: NSGlobalDomain
+    - key: AppleKeyboardUIMode
+      value: -int 3
+      domain: NSGlobalDomain
 
     # Trackpad
     - key: Clicking
@@ -94,22 +94,22 @@ osx:
     # Dock
     - key: autohide
       value: -bool false
-      domain: com.apple.Dock
+      domain: com.apple.dock
     - key: mineffect
       value: -string scale
-      domain: com.apple.Dock
+      domain: com.apple.dock
     - key: minimize-to-application
       value: -bool true
-      domain: com.apple.Dock
+      domain: com.apple.dock
     - key: orientation
       value: -string bottom
-      domain: com.apple.Dock
+      domain: com.apple.dock
     - key: tilesize
-      value: -int 24
-      domain: com.apple.Dock
+      value: -int 30
+      domain: com.apple.dock
     - key: showAppExposeGestureEnabled
       value: -bool true
-      domain: com.apple.Dock
+      domain: com.apple.dock
 
     # Help
     - key: DevMode
