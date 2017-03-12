@@ -9,3 +9,7 @@
   with_items:
     - { path: "vimrc.vim", dest: ".vimrc" }
     - { path: "plugins", dest: ".vim" }
+
+- name: "Install vundle"
+  command: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vimfiles/plugins/bundle/Vundle.vim
+  tags: vundle
