@@ -8,6 +8,15 @@
   tags:
     - osx
 
+- name: macos defaults
+  hosts: laptop
+  vars_files:
+    - vars/macos.yml
+  roles: 
+    - macos
+  tags:
+    - macos
+
 - name: brew
   hosts: laptop
   roles:
