@@ -5,7 +5,7 @@ osx:
   prefs:
     # Global Preferences
     - key: AppleScrollerPagingBehavior
-      value: 1
+      value: -int 1
       domain: NSGlobalDomain
     - key: KeyRepeat
       value: -int 1
