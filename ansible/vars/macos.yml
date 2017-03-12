@@ -77,8 +77,8 @@ General_AppleInterfaceStyle: "Dark"                  # Use Dark menu bar and Doc
 General_AutoHideMenuBar: false                   # Automatically hide and show the menu bar
 General_AppleHighlightColor: "Blue"              # Highlight color (Red, Orange, Yellow, Green, Blue, Purple, Pink, Brown, Graphite)
 General_SidebarIconSize: 1                       # Sidebar icon size (Small: 1, Medium: 2, Large: 3)
-# General_AppleShowScrollBars: "Automatic"         # Scroll bar visibility (WhenScrolling, Automatic, Always)
-General_AppleScrollerPagingBehavior: 0           # Click in the scrollbar to (0: Jump to the next page, 1: Jump to the spot that's clicked)
+General_AppleShowScrollBars: "Automatic"         # Scroll bar visibility (WhenScrolling, Automatic, Always)
+General_AppleScrollerPagingBehavior: false           # Click in the scrollbar to (0: Jump to the next page, 1: Jump to the spot that's clicked)
 General_NSCloseAlwaysConfirmsChanges: false      # Ask to keep changes when closing documents
 General_CloseWindowsWhenQuittingApp: false       # Close windows when quitting an application
 General_NSScrollAnimationEnabled: true           # Smooth scrolling (Disable on older Macs)
