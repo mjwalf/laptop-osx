@@ -17,12 +17,7 @@
     - { path: "tmux.conf", dest: ".tmux.conf" }
     - { path: "gitconfig", dest: ".gitconfig" }
     - { path: "zsh/zshrc", dest: ".zshrc" }
-
-- name: "Link secrets" #TODO change to secure location
-  file: src=/Users/{{install_user}}/Documents/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
-  with_items:
-    - { path: ".dotfiles/.common_env", dest: ".common_env" }
-    - { path: ".dotfiles/.localsecrets", dest: ".localsecrets" }
+    - { path: "common_env", dest: ".common_env" }
 
 - name: "Clone oh-my-zsh robbyrussell"
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/Users/{{install_user}}/oh-my-zsh recursive=yes
