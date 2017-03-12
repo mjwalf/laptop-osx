@@ -4,12 +4,15 @@
 - name: "Tap Homebrew repos"
   homebrew_tap: name="{{item}}" state=present
   with_items: "{{ casks.taps }}"
+  tags: bootstrap
 
 - name: "update Homebrew"
   homebrew: update_homebrew=yes
+  tags: bootstrap
 
 - name: "update Homebrew"
   homebrew: state=latest
+  tags: bootstrap
 
 - name: "Install Base Casks"
   homebrew_cask: name="{{item}}" install_options="force" state=present

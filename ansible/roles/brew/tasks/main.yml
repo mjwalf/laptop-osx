@@ -6,7 +6,7 @@
 
 - name: "update Homebrew"
   homebrew: state=latest
-  tags: update
+  tags: bootstrap, update
 
 - name: "Install all latest Homebrew packages"
   homebrew: name="{{item.package}}" install_options="{{item.options | default("") }}" state=latest
