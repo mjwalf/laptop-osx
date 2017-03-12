@@ -1,16 +1,25 @@
 ---
 # osx playbook
 
-- name: "OS X Preferences"
-  command: "defaults write {{item.domain}} {{item.key}} {{item.value}}"
-  with_items: "{{osx.prefs}}"
+# - name: "OS X Preferences"
+#   command: "defaults write {{item.domain}} {{item.key}} {{item.value}}"
+#   with_items: "{{osx.prefs}}"
 
-- name: "Killing affected apps"
-  command: "killall {{item}}"
-  with_items:
-    - "Dock"
-    - "Finder"
-    - "SystemUIServer"
+# - name: "Killing affected apps"
+#   command: "killall {{item}}"
+#   with_items:
+#     - "Dock"
+#     - "Finder"
+#     - "SystemUIServer"
+
+
+- name:  "macOS Defaults"
+  git: repo=https://github.com/lafarer/ansible-role-osx-defaults.git dest=/Users/{{install_user}}/Developer/config/src/github.com/lafarer/ansible-role-osx-defaults}} recursive=yes
+  tags: bootstrap
+
+- name: "copy files for use as role"
+  command: cp -fR /Users/{{install_user}}/Developer/config/src/github.com/lafarer/ansible-role-osx-defaults /Users/{{install_user}}/Developer/config/src/github.com/mjwalf/ansible/roles/macos
+  tags: bootstrap
 
 - include: dockutil.yml
   
