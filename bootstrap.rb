@@ -89,8 +89,12 @@ module Bootstrap extend self
     sudo "pip", "-q", "install", "ansible" if !Kernel.system "/usr/bin/which -s ansible"
   end
 
+  def run_ansible_bootstrap
+    system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "--ask-sudo-pass", "--tags=bootstrap"
+  end
+
   def run_ansible
-    system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "--ask-sudo-pass", "--skip-tags=allcasks,allbrewpackages,mas"
+    system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "--ask-sudo-pass", "--skip-tags=bootstrap"
   end
 end
 
@@ -110,6 +114,9 @@ Bootstrap.clone_repo
 
 ohai "Installing ansible"
 Bootstrap.install_ansible
+
+ohai "Running ansible bootstrap"
+Bootstrap.run_ansible_bootstrap
 
 ohai "Running ansible"
 Bootstrap.run_ansible
