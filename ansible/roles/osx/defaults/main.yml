@@ -22,6 +22,9 @@ osx:
     - key: AppleKeyboardUIMode
       value: -int 3
       domain: NSGlobalDomain
+    - key: AppleInterfaceTheme
+      value: Dark
+      domain: NSGlobalDomain
 
     # Trackpad
     - key: Clicking

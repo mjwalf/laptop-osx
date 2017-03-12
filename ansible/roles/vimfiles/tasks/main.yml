@@ -3,13 +3,15 @@
 
 - name: "Clone vimfiles"
   git: repo=https://github.com/sthulb-attic/vimfiles.git dest=/Users/{{install_user}}/.vimfiles recursive=yes
+  tags: bootstrap
 
 - name: "Link files"
   file: src=/Users/{{install_user}}/.vimfiles/{{item.path}} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
   with_items:
     - { path: "vimrc.vim", dest: ".vimrc" }
     - { path: "plugins", dest: ".vim" }
+  tags: bootstrap
 
 - name: "Install vundle"
-  command: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vimfiles/plugins/bundle/Vundle.vim
-  tags: vundle
+  git: repo=https://github.com/VundleVim/Vundle.vim.git dest=/Users/{{install_user}}/.vimfiles/plugins/bundle/Vundle.vim recursive=yes
+  tags: bootstrap
