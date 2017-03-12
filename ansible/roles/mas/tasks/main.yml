@@ -4,7 +4,7 @@
 - name: "Sign in to app store"
   command: mas signin "{{apple_id}}"
   become_user: "{{install_user}}"
-  tags: bootstrap
+  tags: mas
 
 - name: "Install appstore packages"
   command: mas install "{{item}}"
