@@ -89,6 +89,10 @@ module Bootstrap extend self
     sudo "pip", "-q", "install", "ansible" if !Kernel.system "/usr/bin/which -s ansible"
   end
 
+  def run_ansible_galaxy
+    sudo "ansible-galaxy", "install", "lafarer.osx-defaults"
+  end
+
   def run_ansible_bootstrap
     system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "--ask-sudo-pass", "--tags=bootstrap"
   end
@@ -114,6 +118,9 @@ Bootstrap.clone_repo
 
 ohai "Installing ansible"
 Bootstrap.install_ansible
+
+ohai "Running Ansible Galaxy"
+Bootstrap.run_ansible_galaxy
 
 ohai "Running ansible bootstrap"
 Bootstrap.run_ansible_bootstrap
