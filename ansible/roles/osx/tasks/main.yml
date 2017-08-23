@@ -15,7 +15,7 @@
 
 - name:  "macOS Defaults"
   git: repo=https://github.com/lafarer/ansible-role-osx-defaults.git dest=/Users/{{install_user}}/Developer/config/src/github.com/lafarer/ansible-role-osx-defaults recursive=yes
-  tags: bootstrap
+  # tags: bootstrap
 
 - name: "copy files for use as role"
   command: "cp -fR /Users/{{install_user}}/Developer/config/src/github.com/lafarer/ansible-role-osx-defaults/* /Users/{{install_user}}/Developer/config/src/github.com/mjwalf/laptop-osx/ansible/roles/macos"

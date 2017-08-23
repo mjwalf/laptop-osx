@@ -21,3 +21,4 @@ casks:
  #   - vmware-fusion
  #   - skype
     - google-cloud-sdk
+    - lastpass
