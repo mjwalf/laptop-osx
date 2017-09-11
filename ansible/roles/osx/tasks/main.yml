@@ -20,7 +20,7 @@
 - name: "copy files for use as role"
   command: "cp -fR /Users/{{install_user}}/Developer/config/src/github.com/lafarer/ansible-role-osx-defaults/* /Users/{{install_user}}/Developer/config/src/github.com/mjwalf/laptop-osx/ansible/roles/macos"
   become: true
-  # tags: bootstrap
+  tags: bootstrap
 
 - include: dockutil.yml
   

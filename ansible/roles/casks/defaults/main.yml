@@ -12,13 +12,13 @@ casks:
     - 1password
     - iterm2-beta
   packages:
-    - dropbox
     - google-chrome
- #   - google-hangouts
- #   - hipchat
     - the-unarchiver
     - viscosity
- #   - vmware-fusion
- #   - skype
     - google-cloud-sdk
     - lastpass
+    - tunnelblick
+    - microsoft-remote-desktop-beta
+    - firefox
+    - docker
+    - royal-tsx
