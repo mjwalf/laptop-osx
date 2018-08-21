@@ -36,15 +36,6 @@
   tags:
     - vimfiles
 
-- name: mas
-  hosts: laptop
-  vars_files:
-    - vars/vars_file.yml
-  roles: 
-    - mas
-  tags:
-    - mas
-
 - name: macos defaults
   hosts: laptop
   vars_files:
