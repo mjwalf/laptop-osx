@@ -1,7 +1,0 @@
----
-# packages to be installed by mas
-
-mas:
-  packages:
-    #- "715768417" # Microsoft Remote Desktop
-    - "937984704" # Amphetamine

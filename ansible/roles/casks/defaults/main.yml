@@ -4,21 +4,20 @@
 casks:
   taps:
     - caskroom/homebrew-cask
-    - caskroom/homebrew-versions
+    - caskroom/homebrew-versions  
 
   packages_min:
-    - slack-beta
+    - slack
     - visual-studio-code
     - 1password
     - iterm2-beta
   packages:
     - google-chrome
     - the-unarchiver
-    - viscosity
     - google-cloud-sdk
-    - lastpass
-    - tunnelblick
     - microsoft-remote-desktop-beta
     - firefox
     - docker
-    - royal-tsx
+    - little-snitch
+    - micro-snitch
+    - expressvpn
