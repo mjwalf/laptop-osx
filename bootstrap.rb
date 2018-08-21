@@ -62,7 +62,7 @@ at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 
 module Bootstrap extend self
   def xcode_cli_tools
-    sudo "xcode-select", "--install" if !Kernel.system "xcode-select --help"
+    sudo "xcode-select", "--install" if !Kernel.system "xcode-select -p"
     puts "Press any key when the installation has completed or if already installed."
     getc
   end
@@ -77,9 +77,7 @@ module Bootstrap extend self
       # "git remote add" will fail if the remote is defined in the global config
       system "git", "config", "remote.origin.url", "https://github.com/mjwalf/laptop-osx.git"
       system "git", "config", "remote.origin.fetch", "+refs/heads/*:refs/remotes/origin/*"
-
       system "git", "fetch", "origin", "master:refs/remotes/origin/master", "-n"
-
       system "git", "reset", "--hard", "origin/master"
     end
   end
@@ -89,13 +87,10 @@ module Bootstrap extend self
     sudo "pip", "-q", "install", "ansible" if !Kernel.system "/usr/bin/which -s ansible"
   end
 
-  def run_ansible_bootstrap
+  def run_ansible
     system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "--ask-sudo-pass", "--tags=bootstrap"
   end
 
-  def run_ansible
-    system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "--ask-sudo-pass", "--skip-tags=bootstrap,mas"
-  end
 end
 
 puts <<LULZ
@@ -114,9 +109,6 @@ Bootstrap.clone_repo
 
 ohai "Installing ansible"
 Bootstrap.install_ansible
-
-ohai "Running ansible bootstrap"
-Bootstrap.run_ansible_bootstrap
 
 ohai "Running ansible"
 Bootstrap.run_ansible
