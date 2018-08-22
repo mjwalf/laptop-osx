@@ -1,12 +1,13 @@
 ---
 # Playbook file
 
-- name: osx
-  hosts: laptop
-  roles:
-    - osx
-  tags:
-    - osx
+# TODO incorp osx into macos role
+# - name: osx
+#   hosts: laptop
+#   roles:
+#     - osx
+#   tags:
+#     - osx
 
 - name: brew
   hosts: laptop
@@ -36,7 +37,7 @@
   tags:
     - vimfiles
 
-- name: macos defaults
+- name: macos
   hosts: laptop
   vars_files:
     - vars/macos.yml

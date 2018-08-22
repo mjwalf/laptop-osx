@@ -1,20 +1,24 @@
 ---
-# cask playbook
+# Taps and Casks
 
-# - name: "Tap Homebrew repos"
-#   homebrew_tap: name="{{item}}" state=present
-#   with_items: "{{ casks.taps }}"
-#   tags: bootstrap
+- name: "Check Homebrew path exists"
+  stat: 
+    path: /usr/local/Homebrew
+  register: p
 
-- name: "update Homebrew"
+- name: "Update Homebrew"
+  when: p.stat.exists == False
   homebrew: update_homebrew=yes
-  tags: bootstrap
 
-- name: "update Homebrew"
+- name: "Upgrade Homebrew"
+  when: p.stat.exists == False
   homebrew: state=latest
-  tags: bootstrap
 
-- name: "Install Base Casks"
+- name: "Tap Homebrew repos"
+  homebrew_tap: name="{{item}}" state=present
+  with_items: "{{ casks.taps }}"
+
+- name: "Install Casks (bootstrap)"
   homebrew_cask: name="{{item}}" install_options="force" state=present
   environment:
     HOMEBREW_CASK_OPTS: "--appdir=/Applications"
@@ -26,4 +30,3 @@
   environment:
     HOMEBREW_CASK_OPTS: "--appdir=/Applications"
   with_items: "{{ casks.packages }}"
-  tags: allcasks

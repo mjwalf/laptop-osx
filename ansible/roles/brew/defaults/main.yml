@@ -31,4 +31,3 @@ brew:
     - package: "pyenv"
     - package: "pyenv-virtualenv"
     - package: "m-cli"
-    

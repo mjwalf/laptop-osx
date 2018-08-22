@@ -88,7 +88,7 @@ module Bootstrap extend self
   end
 
   def run_ansible
-    system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "--ask-sudo-pass", "--tags=bootstrap"
+    system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "-K", "--tags=bootstrap"
   end
 
 end
@@ -96,7 +96,7 @@ end
 puts <<LULZ
 Welcome!
 
-This is now (mjwalf's) provisioning script, to provision a working developer environment stolen from sthulb and changed where needed"
+This is mjwalfs laptop provisioning script. Use to provision a working developer environment stolen from sthulb and changed where needed
 LULZ
 
 puts

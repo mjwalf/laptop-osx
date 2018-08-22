@@ -1,11 +1,11 @@
 ---
-# properties
+# Declare Casks and Taps
 
 casks:
-  # taps:
-  #   - caskroom/homebrew-cask
-  #   - caskroom/homebrew-versions  
-
+  taps:
+    # - 'https://github.com/buo/homebrew-cask-upgrade'
+    - homebrew/cask
+    - homebrew/cask-versions
   packages_min:
     - slack
     - visual-studio-code
