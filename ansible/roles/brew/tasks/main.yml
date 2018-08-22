@@ -6,14 +6,13 @@
 
 - name: "update Homebrew"
   homebrew: state=latest
-  tags: bootstrap, update
+  tags: bootstrap
 
 - name: "Install all latest Homebrew packages"
   homebrew: name="{{item.package}}" install_options="{{item.options | default("") }}" state=latest
   with_items: "{{brew.packages}}"
-  tags: allbrewpackages
 
-- name: "Install the mimimum Homebrew packages"
+- name: "Install the minimum Homebrew packages"
   homebrew: name="{{item.package}}" install_options="{{item.options | default("") }}" state=latest
   with_items: "{{brew.packages_min}}"
   tags: bootstrap

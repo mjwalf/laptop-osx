@@ -8,11 +8,11 @@
 - name: Set the default Dock items
   command: dockutil --add "{{ item }}"
   with_items:
-    - /Applications/Safari.app
     - "/Applications/App Store.app"
     - "/Applications/System Preferences.app"
     - "/Applications/Google Chrome.app"
     - "/Applications/iTerm.app"
     - "/Applications/Visual Studio Code.app"
     - "/Applications/Messages.app"
+    - "/Applications/Slack.app"
   tags: dock

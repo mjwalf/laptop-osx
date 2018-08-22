@@ -18,7 +18,7 @@ Dashboard_EnabledState: 1                        # Dashboard state (1: Off, 2: A
 Dashboard_DontShowAsSpace: true                  # Don’t show Dashboard as a Space
 Dashboard_DevMode: false                         # Enable Dashboard dev mode (allows keeping widgets on the desktop)
 
-DateTime_Enabled: false                          # Enable Date Time configuration
+DateTime_Enabled: true                          # Enable Date Time configuration
 DateTime_TimeZone: "Europe/Brussels"             # Set the timezone; see `systemsetup -listtimezones` for other values
 DateTime_AutomaticDateTime: "on"                 # Set date and time automatically (on | off)
 DateTime_TimeServer: "time.apple.com"            # Set time server

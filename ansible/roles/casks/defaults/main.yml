@@ -2,9 +2,9 @@
 # properties
 
 casks:
-  taps:
-    - caskroom/homebrew-cask
-    - caskroom/homebrew-versions  
+  # taps:
+  #   - caskroom/homebrew-cask
+  #   - caskroom/homebrew-versions  
 
   packages_min:
     - slack

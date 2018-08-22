@@ -1,10 +1,10 @@
 ---
 # cask playbook
 
-- name: "Tap Homebrew repos"
-  homebrew_tap: name="{{item}}" state=present
-  with_items: "{{ casks.taps }}"
-  tags: bootstrap
+# - name: "Tap Homebrew repos"
+#   homebrew_tap: name="{{item}}" state=present
+#   with_items: "{{ casks.taps }}"
+#   tags: bootstrap
 
 - name: "update Homebrew"
   homebrew: update_homebrew=yes
