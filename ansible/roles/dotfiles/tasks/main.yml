@@ -1,32 +1,29 @@
 ---
 # dotfiles playbook
 
-- name: "check dotfiles exist"
+- name: "Check if dotfiles exists"
   stat: 
     path: /Users/{{install_user}}/.dotfiles
   register: j
 
-- name: "Clone dotfiles"
+- name: "Check if vimfiles path exists"
+  stat: 
+    path: /Users/{{install_user}}/.vimfiles
+  register: v
+
+- name: "Clone dotfiles repo"
   git: repo=https://github.com/mjwalf/dotfiles.git dest=/Users/{{install_user}}/.dotfiles recursive=yes
   when: j.stat.exists == False
 
-- name: "Clone oh-my-zsh robbyrussell"
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/Users/{{install_user}}/oh-my-zsh recursive=yes
+- name: "Clone oh-my-zsh from robbyrussell repo"
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/Users/{{install_user}}/.oh-my-zsh recursive=yes
   when: j.stat.exists == False
 
-- name: "Link oh-my-zsh"
-  file: src=/Users/{{install_user}}/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link
-  when: j.stat.exists == False
-  with_items:
-    - { path: "oh-my-zsh", dest: ".oh-my-zsh" }
+- name: "Clone vimfiles repo"
+  git: repo=https://github.com/sthulb-attic/vimfiles.git dest=/Users/{{install_user}}/.vimfiles recursive=yes
+  when: v.stat.exists == False
 
-- name: "Link files min"
-  file: src=/Users/{{install_user}}/.dotfiles/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link
-  when: j.stat.exists == False
-  with_items:
-    - { path: "zsh/zshrc", dest: ".zshrc" }
-
-- name: "Link files"
+- name: "Link Dot files"
   file: src=/Users/{{install_user}}/.dotfiles/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
   when: j.stat.exists == False
   with_items:
@@ -34,14 +31,25 @@
     - { path: "gitconfig", dest: ".gitconfig" }
     - { path: "zsh/zshrc", dest: ".zshrc" }
 
+- name: "Link VIM files"
+  when: v.stat.exists == False
+  file: src=/Users/{{install_user}}/.vimfiles/{{item.path}} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
+  with_items:
+    - { path: "vimrc.vim", dest: ".vimrc" }
+    - { path: "plugins", dest: ".vim" }
+
 - name: "Install font"
   file: src="/Users/{{install_user}}/.dotfiles/fonts/Droid Sans Mono for Powerline.otf" dest="/Users/{{install_user}}/Library/Fonts/Droid Sans Mono for Powerline.otf" state=link
   when: j.stat.exists == False
 
-- name: "add shell"
+- name: "Add Zshell"
   lineinfile: dest=/etc/shells line='/usr/local/bin/zsh'
   become: true
 
-- name: "change shell"
+- name: "Change default shell to zsh"
   command: chsh -s /usr/local/bin/zsh "{{install_user}}"
   become: true
+
+- name: "Install Vundle"
+  when: v.stat.exists == False
+  git: repo=https://github.com/VundleVim/Vundle.vim.git dest=/Users/{{install_user}}/.vimfiles/plugins/bundle/Vundle.vim recursive=yes

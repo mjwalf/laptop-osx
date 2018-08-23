@@ -22,13 +22,6 @@
   tags:
     - dotfiles
 
-- name: vimfiles
-  hosts: laptop
-  roles:
-    - vimfiles
-  tags:
-    - vimfiles
-
 - name: macos
   hosts: laptop
   vars_files:
