@@ -11,13 +11,53 @@
   when: p.stat.exists == False
   become: true
 
-- name: "homebrew permissions"
+- name: "homebrew bin permissions"
   file: path=/usr/local/bin state=directory owner="{{ install_user }}" group=staff
   when: p.stat.exists == False
   become: true
 
-- name: "homebrew permissions"
+- name: "homebrew var permissions"
   file: path=/usr/local/var state=directory owner="{{ install_user }}" group=staff
+  when: p.stat.exists == False
+  become: true
+
+- name: "homebrew Cellar permissions"
+  file: path=/usr/local/Cellar state=directory owner="{{ install_user }}" group=staff
+  when: p.stat.exists == False
+  become: true
+
+- name: "homebrew Frameworks permissions"
+  file: path=/usr/local/Cellar state=directory owner="{{ install_user }}" group=staff
+  when: p.stat.exists == False
+  become: true
+
+- name: "homebrew include permissions"
+  file: path=/usr/local/Frameworks state=directory owner="{{ install_user }}" group=staff
+  when: p.stat.exists == False
+  become: true
+
+- name: "homebrew lib permissions"
+  file: path=/usr/local/lib state=directory owner="{{ install_user }}" group=staff
+  when: p.stat.exists == False
+  become: true
+
+- name: "homebrew share permissions"
+  file: path=/usr/local/share state=directory owner="{{ install_user }}" group=staff
+  when: p.stat.exists == False
+  become: true
+
+- name: "homebrew Caskroom permissions"
+  file: path=/usr/local/Caskroom state=directory owner="{{ install_user }}" group=staff
+  when: p.stat.exists == False
+  become: true
+
+- name: "homebrew etc permissions"
+  file: path=/usr/local/etc state=directory owner="{{ install_user }}" group=staff
+  when: p.stat.exists == False
+  become: true
+
+- name: "homebrew opt permissions"
+  file: path=/usr/local/opt state=directory owner="{{ install_user }}" group=staff
   when: p.stat.exists == False
   become: true
 
