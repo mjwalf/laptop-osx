@@ -12,11 +12,6 @@
   become: true
 
 - name: "homebrew permissions"
-  file: path=/usr/local state=directory owner="{{ install_user }}" group=staff
-  when: p.stat.exists == False
-  become: true
-
-- name: "homebrew permissions"
   file: path=/usr/local/bin state=directory owner="{{ install_user }}" group=staff
   when: p.stat.exists == False
   become: true
