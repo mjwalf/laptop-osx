@@ -23,6 +23,10 @@
   git: repo=https://github.com/sthulb-attic/vimfiles.git dest=/Users/{{install_user}}/.vimfiles recursive=yes
   when: v.stat.exists == False
 
+- name: "Clone Vundle repo (install)"
+  when: v.stat.exists == False
+  git: repo=https://github.com/VundleVim/Vundle.vim.git dest=/Users/{{install_user}}/.vimfiles/plugins/bundle/Vundle.vim recursive=yes
+
 - name: "Link Dot files"
   file: src=/Users/{{install_user}}/.dotfiles/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
   when: j.stat.exists == False
@@ -49,7 +53,3 @@
 - name: "Change default shell to zsh"
   command: chsh -s /usr/local/bin/zsh "{{install_user}}"
   become: true
-
-- name: "Install Vundle"
-  when: v.stat.exists == False
-  git: repo=https://github.com/VundleVim/Vundle.vim.git dest=/Users/{{install_user}}/.vimfiles/plugins/bundle/Vundle.vim recursive=yes
