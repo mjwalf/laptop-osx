@@ -7,12 +7,12 @@
   register: p
 
 - name: "Update Homebrew"
-  when: p.stat.exists == False
   homebrew: update_homebrew=yes
+  when: p.stat.exists == False
 
 - name: "Upgrade Homebrew"
-  when: p.stat.exists == False
   homebrew: state=latest
+  when: p.stat.exists == False
 
 - name: "Tap Homebrew repos"
   homebrew_tap: name="{{item}}" state=present

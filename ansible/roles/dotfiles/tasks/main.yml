@@ -9,14 +9,12 @@
 - name: "Clone dotfiles"
   git: repo=https://github.com/mjwalf/dotfiles.git dest=/Users/"{{ install_user }}"/.dotfiles recursive=yes
   when: j.stat.exists == False
-  tags: dotfiles
 
 - name: "Link files min"
   file: src=/Users/{{install_user}}/.dotfiles/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link
   when: j.stat.exists == False
   with_items:
     - { path: "zsh/zshrc", dest: ".zshrc" }
-  tags: dotfiles
 
 - name: "Link files"
   file: src=/Users/{{install_user}}/.dotfiles/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
@@ -29,26 +27,21 @@
 - name: "Clone oh-my-zsh robbyrussell"
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/Users/{{install_user}}/oh-my-zsh recursive=yes
   when: j.stat.exists == False
-  tags: dotfiles
 
 - name: "Link oh-my-zsh"
   file: src=/Users/{{install_user}}/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link
   when: j.stat.exists == False
   with_items:
     - { path: "oh-my-zsh", dest: ".oh-my-zsh" }
-  tags: dotfiles
 
 - name: "Install font"
   file: src="/Users/{{install_user}}/.dotfiles/fonts/Droid Sans Mono for Powerline.otf" dest="/Users/{{install_user}}/Library/Fonts/Droid Sans Mono for Powerline.otf" state=link
   when: j.stat.exists == False
-  tags: dotfiles
 
 - name: "add shell"
   lineinfile: dest=/etc/shells line='/usr/local/bin/zsh'
   become: true
-  tags: dotfiles
 
 - name: "change shell"
   command: chsh -s /usr/local/bin/zsh "{{install_user}}"
   become: true
-  tags: dotfiles
