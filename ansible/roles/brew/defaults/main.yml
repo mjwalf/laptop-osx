@@ -2,13 +2,12 @@
 # properties
 
 brew:
-  packages_min:
+  packages:
     - package: "git"
     - package: "vim"
     - package: "zsh"
     - package: "mas"
     - package: "dockutil"
-  packages:
     - package: "autoconf"
     - package: "automake"
     - package: "awscli"
