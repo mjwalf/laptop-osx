@@ -27,12 +27,12 @@
   become: true
 
 - name: "homebrew Frameworks permissions"
-  file: path=/usr/local/Cellar state=directory owner="{{ install_user }}" group=staff
+  file: path=/usr/local/Frameworks state=directory owner="{{ install_user }}" group=staff
   when: p.stat.exists == False
   become: true
 
 - name: "homebrew include permissions"
-  file: path=/usr/local/Frameworks state=directory owner="{{ install_user }}" group=staff
+  file: path=/usr/local/include state=directory owner="{{ install_user }}" group=staff
   when: p.stat.exists == False
   become: true
 
