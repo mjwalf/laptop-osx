@@ -16,6 +16,11 @@
   when: p.stat.exists == False
   become: true
 
+- name: "homebrew permissions"
+  file: path=/usr/local/var state=directory owner="{{ install_user }}" group=staff
+  when: p.stat.exists == False
+  become: true
+
 - name: "Homebrew init"
   command: git init -q
   when: p.stat.exists == False
