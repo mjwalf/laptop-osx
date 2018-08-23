@@ -7,7 +7,7 @@
   register: j
 
 - name: "Clone dotfiles"
-  git: repo=https://github.com/mjwalf/dotfiles.git dest=/Users/"{{ install_user }}"/.dotfiles recursive=yes
+  git: repo=https://github.com/mjwalf/dotfiles.git dest=/Users/{{install_user}}/.dotfiles recursive=yes
   when: j.stat.exists == False
 
 - name: "Link files min"
