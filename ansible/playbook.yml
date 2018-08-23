@@ -1,14 +1,6 @@
 ---
 # Playbook file
 
-# TODO incorp osx into macos role
-# - name: osx
-#   hosts: laptop
-#   roles:
-#     - osx
-#   tags:
-#     - osx
-
 - name: brew
   hosts: laptop
   roles:
@@ -45,3 +37,10 @@
     - macos
   tags:
     - macos
+
+- name: dock
+  hosts: laptop
+  roles:
+    - dock
+  tags:
+    - dock

@@ -3,7 +3,6 @@
 
 - name: Remove all items from the Dock
   command: dockutil --remove all
-  tags: dock
 
 - name: Set the default Dock items
   command: dockutil --add "{{ item }}"
@@ -15,4 +14,3 @@
     - "/Applications/Visual Studio Code.app"
     - "/Applications/Messages.app"
     - "/Applications/Slack.app"
-  tags: dock

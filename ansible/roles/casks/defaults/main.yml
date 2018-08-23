@@ -6,11 +6,6 @@ casks:
     # - 'https://github.com/buo/homebrew-cask-upgrade'
     - homebrew/cask
     - homebrew/cask-versions
-  packages_min:
-    - slack
-    - visual-studio-code
-    - 1password
-    - iterm2-beta
   packages:
     - google-chrome
     - the-unarchiver
@@ -21,3 +16,7 @@ casks:
     - little-snitch
     - micro-snitch
     - expressvpn
+    - slack
+    - visual-studio-code
+    - 1password
+    - iterm2-beta

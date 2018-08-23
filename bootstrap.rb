@@ -88,7 +88,7 @@ module Bootstrap extend self
   end
 
   def run_ansible
-    system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "-K", "--tags=bootstrap"
+    system "ansible-playbook", "#{INSTALL_DIR}/ansible/playbook.yml", "-e", "install_user=#{ENV["USER"]}", "-i", "#{INSTALL_DIR}/ansible/hosts", "-K"
   end
 
 end
