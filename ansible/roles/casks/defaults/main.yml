@@ -20,3 +20,4 @@ casks:
     - visual-studio-code
     - 1password
     - iterm2-beta
+    - docker
