@@ -32,3 +32,4 @@ brew:
     - package: "m-cli"
     - package: "kubernetes-cli"
     - package: "kubernetes-helm"
+    - package: "telnet"

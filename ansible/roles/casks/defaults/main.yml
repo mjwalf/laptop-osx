@@ -21,3 +21,5 @@ casks:
     - 1password
     - iterm2-beta
     - docker
+    - minikube
+    - virtualbox
