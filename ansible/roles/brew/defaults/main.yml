@@ -31,3 +31,4 @@ brew:
     - package: "pyenv-virtualenv"
     - package: "m-cli"
     - package: "kubernetes-cli"
+    - package: "kubernetes-helm"
