@@ -33,3 +33,4 @@ brew:
     - package: "kubernetes-cli"
     - package: "kubernetes-helm"
     - package: "telnet"
+    - package: "watch"
