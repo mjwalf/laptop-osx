@@ -34,3 +34,5 @@ brew:
     - package: "kubernetes-helm"
     - package: "telnet"
     - package: "watch"
+    - package: "kops"
+    
