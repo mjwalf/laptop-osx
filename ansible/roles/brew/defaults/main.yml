@@ -35,3 +35,6 @@ brew:
     - package: "telnet"
     - package: "watch"
     - package: "kops"
+    - package: "bind"
+    - package: "saml2aws"
+    - package: "protobuf"
