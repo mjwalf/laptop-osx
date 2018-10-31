@@ -38,3 +38,6 @@ brew:
     - package: "bind"
     - package: "saml2aws"
     - package: "protobuf"
+    - package: "saml2aws"
+    - package: "sudolikeaboss"
+    

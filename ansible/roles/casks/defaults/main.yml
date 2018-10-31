@@ -3,9 +3,11 @@
 
 casks:
   taps:
-    # - 'https://github.com/buo/homebrew-cask-upgrade'
     - homebrew/cask
     - homebrew/cask-versions
+    - johanhaleby/kubetail
+    - versent/homebrew-taps
+    - ravenac95/sudolikeaboss
   packages:
     - google-chrome
     - the-unarchiver
@@ -26,3 +28,6 @@ casks:
     - viscosity
     - spectacle
     - bettertouchtool
+    - kubetail
+    - sam
+    
