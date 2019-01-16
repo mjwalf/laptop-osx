@@ -8,6 +8,7 @@ casks:
     - johanhaleby/kubetail
     - versent/homebrew-taps
     - ravenac95/sudolikeaboss
+    - aws/tap
   packages:
     - google-chrome
     - the-unarchiver
@@ -30,4 +31,6 @@ casks:
     - bettertouchtool
     - kubetail
     - sam
+    - 1password-cli
+    - aws-sam-cli
     

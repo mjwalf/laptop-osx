@@ -2,14 +2,19 @@
 # dotfiles playbook
 
 - name: "Check if dotfiles exists"
-  stat: 
+  stat:
     path: /Users/{{install_user}}/.dotfiles
   register: j
 
 - name: "Check if vimfiles path exists"
-  stat: 
+  stat:
     path: /Users/{{install_user}}/.vimfiles
   register: v
+
+- name: "Check if vscode path exists"
+  stat:
+    path: /Users/{{install_user}}/.vscode
+  register: vs
 
 - name: "Clone dotfiles repo"
   git: repo=https://github.com/mjwalf/dotfiles.git dest=/Users/{{install_user}}/.dotfiles recursive=yes
@@ -41,6 +46,12 @@
   with_items:
     - { path: "vimrc.vim", dest: ".vimrc" }
     - { path: "plugins", dest: ".vim" }
+
+- name: "Link vscode files"
+  when: vs.stat.exists == False
+  file: src=/Users/{{install_user}}/.vscode/{{item.path}} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
+  with_items:
+    - { path: "vscode", dest: ".vscode" }
 
 - name: "Install font"
   file: src="/Users/{{install_user}}/.dotfiles/fonts/Droid Sans Mono for Powerline.otf" dest="/Users/{{install_user}}/Library/Fonts/Droid Sans Mono for Powerline.otf" state=link
