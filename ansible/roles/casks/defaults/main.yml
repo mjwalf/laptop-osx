@@ -29,8 +29,5 @@ casks:
     - viscosity
     - spectacle
     - bettertouchtool
-    - kubetail
-    - sam
     - 1password-cli
-    - aws-sam-cli
     

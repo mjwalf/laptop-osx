@@ -100,6 +100,10 @@
 - name: "update Homebrew"
   homebrew: state=latest
 
+- name: "Tap Homebrew repos"
+  homebrew_tap: name="{{item}}" state=present
+  with_items: "{{brew.taps}}"
+
 - name: "Install all the Homebrew packages"
   homebrew: name="{{item.package}}" install_options="{{item.options | default("") }}" state=latest
   with_items: "{{brew.packages}}"

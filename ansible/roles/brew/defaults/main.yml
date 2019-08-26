@@ -2,6 +2,9 @@
 # properties
 
 brew:
+  taps:
+    - versent/homebrew-taps
+    - ravenac95/sudolikeaboss
   packages:
     - package: "git"
     - package: "vim"
@@ -24,7 +27,6 @@ brew:
     - package: "terraform"
     - package: "the_silver_searcher"
     - package: "tmux"
-      options: "override-system-vi"
     - package: "watchman"
     - package: "python3"
     - package: "pyenv"
@@ -38,6 +40,6 @@ brew:
     - package: "bind"
     - package: "saml2aws"
     - package: "protobuf"
-    - package: "saml2aws"
     - package: "sudolikeaboss"
-    
+    - package: "kubetail"
+    - package: "aws-sam-cli"

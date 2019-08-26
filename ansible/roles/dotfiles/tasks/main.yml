@@ -24,32 +24,25 @@
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/Users/{{install_user}}/.oh-my-zsh recursive=yes
   when: j.stat.exists == False
 
-- name: "Clone vimfiles repo"
-  git: repo=https://github.com/sthulb-attic/vimfiles.git dest=/Users/{{install_user}}/.vimfiles recursive=yes
-  when: v.stat.exists == False
+- name: "Check zsh is cloned"
+  stat:
+    path: /Users/{{install_user}}/.oh-my-zsh
+  register: z
 
-- name: "Clone Vundle repo (install)"
-  when: v.stat.exists == False
-  git: repo=https://github.com/VundleVim/Vundle.vim.git dest=/Users/{{install_user}}/.vimfiles/plugins/bundle/Vundle.vim recursive=yes
+- name: "clone zsh autosuggestions"
+  git: repo=https://github.com/zsh-users/zsh-completions.git dest=/Users/{{install_user}}/.oh-my-zsh/custom/plugins/zsh-completions recursive=yes
+  when: z.stat.exists == True
 
 - name: "Link Dot files"
   file: src=/Users/{{install_user}}/.dotfiles/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
-  when: j.stat.exists == False
   with_items:
     - { path: "tmux.conf", dest: ".tmux.conf" }
     - { path: "gitconfig", dest: ".gitconfig" }
     - { path: "zsh/zshrc", dest: ".zshrc" }
 
-- name: "Link VIM files"
-  when: v.stat.exists == False
-  file: src=/Users/{{install_user}}/.vimfiles/{{item.path}} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
-  with_items:
-    - { path: "vimrc.vim", dest: ".vimrc" }
-    - { path: "plugins", dest: ".vim" }
-
 - name: "Link vscode files"
   when: vs.stat.exists == False
-  file: src=/Users/{{install_user}}/.vscode/{{item.path}} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
+  file: src=/Users/{{install_user}}/.dotfiles/{{item.path}} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
   with_items:
     - { path: "vscode", dest: ".vscode" }
 

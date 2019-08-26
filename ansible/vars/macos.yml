@@ -86,8 +86,8 @@ ICloud_Enabled: false                            # Enable iCloud configuration
 ICloud_NSDocumentSaveNewDocumentsToCloud: true   # Save to iCloud by default
 
 Keyboard_Enabled: false                            # Enable Keyboard configuration
-Keyboard_KeyRepeat: 0                              # Set key repeat rate (Off: 300000, Slow: 120, Fast: 2)
-Keyboard_InitialKeyRepeat: 10                      # Set delay until repeat, in milliseconds (Long: 120, Short: 15)
+Keyboard_KeyRepeat: 2                              # Set key repeat rate (Off: 300000, Slow: 120, Fast: 2)
+Keyboard_InitialKeyRepeat: 15                      # Set delay until repeat, in milliseconds (Long: 120, Short: 15)
 Keyboard_fnState: false                            # Use F1, F2, etc. keys as standard function keys
 Keyboard_kDim: false                               # Adjust keyboard brightness in low light
 Keyboard_kDimTime: 0                               # Dim keyboard after idle time (in seconds, 0 is Never)
@@ -101,8 +101,8 @@ Keyboard_PressAndHoldEnabled: false                # Disable press-and-hold for 
 LanguageRegion_Enabled: false                    # Enable Language and Region configuration
 #TODO: https://github.com/ansible/ansible-modules-extras/issues/2610
 #LanguageRegion_Languages: [ "en", "fr" ]        # Preferred languages (in order of preference e.g. [ "en", "fr" ])
-LanguageRegion_Locale: "en_US@currency=USD"      # Locale and Currency (United States : en_US@currency=USD, Great Britian : en_GB@currency=EUR)
-LanguageRegion_MeasurementUnits: "Inches"        # Measure Units (Inches, Centimeters)
+LanguageRegion_Locale: "en_US@currency=AUD"      # Locale and Currency (United States : en_US@currency=USD, Great Britian : en_GB@currency=EUR)
+LanguageRegion_MeasurementUnits: "Centimeters"        # Measure Units (Inches, Centimeters)
 LanguageRegion_Force24HourTime: "true"           # Force 12/24 hour time
 LanguageRegion_MetricUnits: "false"              # Set Metric Units
 
