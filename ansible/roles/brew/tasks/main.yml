@@ -103,7 +103,9 @@
 - name: "Tap Homebrew repos"
   homebrew_tap: name="{{item}}" state=present
   with_items: "{{brew.taps}}"
+  ignore_errors: yes
 
 - name: "Install all the Homebrew packages"
   homebrew: name="{{item.package}}" install_options="{{item.options | default("") }}" state=latest
   with_items: "{{brew.packages}}"
+  ignore_errors: yes
