@@ -41,3 +41,4 @@ brew:
     - package: "saml2aws"
     - package: "protobuf"
     - package: "sudolikeaboss"
+    - package: "aws/tap/aws-sam-cli"
