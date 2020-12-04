@@ -5,6 +5,7 @@ brew:
   taps:
     - versent/homebrew-taps
     - ravenac95/sudolikeaboss
+    - cultureamp/tap
   packages:
     - package: "git"
     - package: "vim"
@@ -42,3 +43,4 @@ brew:
     - package: "protobuf"
     - package: "sudolikeaboss"
     - package: "aws/tap/aws-sam-cli"
+    - package: "silk-cli"
