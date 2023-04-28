@@ -38,7 +38,9 @@
   with_items:
     - { path: "tmux.conf", dest: ".tmux.conf" }
     - { path: "gitconfig", dest: ".gitconfig" }
-    - { path: "zsh/zshrc", dest: ".zshrc" }
+    - { path: "zsh/zprofile", dest: ".zprofile" }
+    - { path: "brew/Brewfile", dest: "Brewfile" }
+
 
 - name: "Link vscode files"
   when: vs.stat.exists == False
@@ -49,11 +51,3 @@
 - name: "Install font"
   file: src="/Users/{{install_user}}/.dotfiles/fonts/Droid Sans Mono for Powerline.otf" dest="/Users/{{install_user}}/Library/Fonts/Droid Sans Mono for Powerline.otf" state=link
   when: j.stat.exists == False
-
-- name: "Add Zshell"
-  lineinfile: dest=/etc/shells line='/usr/local/bin/zsh'
-  become: true
-
-- name: "Change default shell to zsh"
-  command: chsh -s /usr/local/bin/zsh "{{install_user}}"
-  become: true
