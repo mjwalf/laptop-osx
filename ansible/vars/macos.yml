@@ -9,8 +9,8 @@ AppStore_CriticalUpdateInstall: true            # Install security updates
 AppStore_ScheduleFrequency: 7                    # Check for software updates (in days)
 AppStore_ShowDebugMenu: false                    # Show debug menu
 
-Bluetooth_Enabled: true                         # Enable Bluetooth configuration
-Bluetooth_ShowInMenuBar: true                   # Show Bluetooth in menu bar
+# Bluetooth_Enabled: true                         # Enable Bluetooth configuration
+# Bluetooth_ShowInMenuBar: true                   # Show Bluetooth in menu bar
 
 Dashboard_Enabled: false                         # Enable Dashboard configuration
 Dashboard_McxDisabled: true                      # Disable Dashboard

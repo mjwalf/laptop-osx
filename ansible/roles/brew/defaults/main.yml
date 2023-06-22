@@ -5,7 +5,6 @@ brew:
   taps:
     - versent/homebrew-taps
     - ravenac95/sudolikeaboss
-    - cultureamp/tap
   packages:
     - package: "git"
     - package: "vim"
@@ -34,13 +33,29 @@ brew:
     - package: "pyenv-virtualenv"
     - package: "m-cli"
     - package: "kubernetes-cli"
-    - package: "kubernetes-helm"
     - package: "telnet"
     - package: "watch"
     - package: "kops"
     - package: "bind"
     - package: "saml2aws"
     - package: "protobuf"
-    - package: "sudolikeaboss"
     - package: "aws/tap/aws-sam-cli"
-    - package: "silk-cli"
+    - package: google-chrome
+    - package: the-unarchiver
+    - package: google-cloud-sdk
+    - package: firefox
+    - package: docker
+    - package: little-snitch
+    - package: micro-snitch
+    - package: expressvpn
+    - package: slack
+    - package: visual-studio-code
+    - package: 1password
+    - package: iterm2-beta
+    - package: docker
+    - package: virtualbox
+    - package: viscosity
+    - package: spectacle
+    - package: bettertouchtool
+    - package: 1password-cli
+    - package: flycut
