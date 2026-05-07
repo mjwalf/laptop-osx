@@ -13,7 +13,7 @@ Tested on:
 Open Terminal and run:
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mjwalf/laptop-osx/main/bootstrap.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mjwalf/laptop-osx/master/bootstrap.sh)"
 ```
 
 The script will:
@@ -25,7 +25,7 @@ The script will:
 5. Install required Ansible collections.
 6. Run the playbook (you'll be prompted for your sudo password once).
 
-To bootstrap from a branch other than `main`:
+To bootstrap from a branch other than `master`:
 
 ```bash
 LAPTOP_OSX_BRANCH=my-branch /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mjwalf/laptop-osx/my-branch/bootstrap.sh)"

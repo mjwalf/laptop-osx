@@ -3,7 +3,7 @@
 # Bootstrap a fresh macOS install for development work.
 #
 # Run with:
-#   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mjwalf/laptop-osx/main/bootstrap.sh)"
+#   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mjwalf/laptop-osx/master/bootstrap.sh)"
 #
 # Steps:
 #   1. Install Xcode Command Line Tools (interactive on first run).
@@ -17,7 +17,7 @@ set -euo pipefail
 
 REPO_USER="mjwalf"
 REPO_NAME="laptop-osx"
-REPO_BRANCH="${LAPTOP_OSX_BRANCH:-main}"
+REPO_BRANCH="${LAPTOP_OSX_BRANCH:-master}"
 INSTALL_DIR="${HOME}/Developer/config/src/github.com/${REPO_USER}/${REPO_NAME}"
 
 # ----- pretty printing -----
