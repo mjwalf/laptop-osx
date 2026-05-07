@@ -1,19 +1,19 @@
 ---
 # Playbook file
 
-- name: brew
-  hosts: laptop
-  roles:
-    - brew
-  tags:
-    - brew
+# - name: brew
+#   hosts: laptop
+#   roles:
+#     - brew
+#   tags:
+#     - brew
 
-- name: casks
-  hosts: laptop
-  roles:
-    - casks
-  tags:
-    - casks
+# - name: casks
+#   hosts: laptop
+#   roles:
+#     - casks
+#   tags:
+#     - casks
 
 - name: dotfiles
   hosts: laptop
@@ -31,9 +31,9 @@
   tags:
     - macos
 
-- name: dock
-  hosts: laptop
-  roles:
-    - dock
-  tags:
-    - dock
+# - name: dock
+#   hosts: laptop
+#   roles:
+#     - dock
+#   tags:
+#     - dock
