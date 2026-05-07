@@ -1,59 +1,90 @@
 ---
-# dotfiles playbook
+# Dotfiles + oh-my-zsh setup.
+#
+# Notes:
+#   * `chsh` is no longer touched: macOS has shipped /bin/zsh as the default
+#     shell since Catalina (2019). If you need a Homebrew zsh, run
+#     `chsh -s $(brew --prefix)/bin/zsh` manually after adding it to /etc/shells.
+#   * The dotfiles repo lives at https://github.com/mjwalf/dotfiles.
 
-- name: "Check if dotfiles exists"
-  stat:
-    path: /Users/{{install_user}}/.dotfiles
-  register: j
-
-- name: "Check if vimfiles path exists"
-  stat:
-    path: /Users/{{install_user}}/.vimfiles
-  register: v
-
-- name: "Check if vscode path exists"
-  stat:
-    path: /Users/{{install_user}}/.vscode
-  register: vs
+- name: "Check if dotfiles already exists"
+  ansible.builtin.stat:
+    path: "/Users/{{ install_user }}/.dotfiles"
+  register: dotfiles_stat
 
 - name: "Clone dotfiles repo"
-  git: repo=https://github.com/mjwalf/dotfiles.git dest=/Users/{{install_user}}/.dotfiles recursive=yes
-  when: j.stat.exists == False
+  ansible.builtin.git:
+    repo: https://github.com/mjwalf/dotfiles.git
+    dest: "/Users/{{ install_user }}/.dotfiles"
+    recursive: true
+    update: false
+  when: not dotfiles_stat.stat.exists
 
-- name: "Clone oh-my-zsh from robbyrussell repo"
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/Users/{{install_user}}/.oh-my-zsh recursive=yes
-  when: j.stat.exists == False
+- name: "Check if oh-my-zsh is installed"
+  ansible.builtin.stat:
+    path: "/Users/{{ install_user }}/.oh-my-zsh"
+  register: omz_stat
 
-- name: "Check zsh is cloned"
-  stat:
-    path: /Users/{{install_user}}/.oh-my-zsh
-  register: z
+- name: "Clone oh-my-zsh"
+  ansible.builtin.git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: "/Users/{{ install_user }}/.oh-my-zsh"
+    update: false
+  when: not omz_stat.stat.exists
 
-- name: "clone zsh autosuggestions"
-  git: repo=https://github.com/zsh-users/zsh-completions.git dest=/Users/{{install_user}}/.oh-my-zsh/custom/plugins/zsh-completions recursive=yes
-  when: z.stat.exists == True
+- name: "Clone zsh-completions plugin"
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-completions.git
+    dest: "/Users/{{ install_user }}/.oh-my-zsh/custom/plugins/zsh-completions"
+    update: false
 
-- name: "Link Dot files"
-  file: src=/Users/{{install_user}}/.dotfiles/{{ item.path }} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
-  with_items:
-    - { path: "tmux.conf", dest: ".tmux.conf" }
-    - { path: "gitconfig", dest: ".gitconfig" }
-    - { path: "zsh/zshrc", dest: ".zshrc" }
+- name: "Clone zsh-autosuggestions plugin"
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "/Users/{{ install_user }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    update: false
 
-- name: "Link vscode files"
-  when: vs.stat.exists == False
-  file: src=/Users/{{install_user}}/.dotfiles/{{item.path}} dest=/Users/{{install_user}}/{{ item.dest }} state=link force=yes
-  with_items:
-    - { path: "vscode", dest: ".vscode" }
+- name: "Clone zsh-syntax-highlighting plugin"
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "/Users/{{ install_user }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    update: false
 
-- name: "Install font"
-  file: src="/Users/{{install_user}}/.dotfiles/fonts/Droid Sans Mono for Powerline.otf" dest="/Users/{{install_user}}/Library/Fonts/Droid Sans Mono for Powerline.otf" state=link
-  when: j.stat.exists == False
+- name: "Symlink shell + git dotfiles"
+  ansible.builtin.file:
+    src: "/Users/{{ install_user }}/.dotfiles/{{ item.path }}"
+    dest: "/Users/{{ install_user }}/{{ item.dest }}"
+    state: link
+    force: true
+  loop:
+    - { path: "gitconfig",      dest: ".gitconfig" }
+    - { path: "zsh/zshrc",      dest: ".zshrc" }
+    - { path: "zsh/zprofile",   dest: ".zprofile" }
 
-- name: "Add Zshell"
-  lineinfile: dest=/etc/shells line='/usr/local/bin/zsh'
-  become: true
+- name: "Ensure ~/.oh-my-zsh/custom/themes exists"
+  ansible.builtin.file:
+    path: "/Users/{{ install_user }}/.oh-my-zsh/custom/themes"
+    state: directory
+    mode: "0755"
 
-- name: "Change default shell to zsh"
-  command: chsh -s /usr/local/bin/zsh "{{install_user}}"
-  become: true
+- name: "Symlink the apple zsh theme into oh-my-zsh custom themes"
+  ansible.builtin.file:
+    src: "/Users/{{ install_user }}/.dotfiles/zsh/apple.zsh-theme"
+    dest: "/Users/{{ install_user }}/.oh-my-zsh/custom/themes/apple.zsh-theme"
+    state: link
+    force: true
+
+- name: "Ensure ~/Library/Fonts exists"
+  ansible.builtin.file:
+    path: "/Users/{{ install_user }}/Library/Fonts"
+    state: directory
+    mode: "0755"
+
+- name: "Install Powerline font"
+  ansible.builtin.file:
+    src: "/Users/{{ install_user }}/.dotfiles/fonts/Droid Sans Mono for Powerline.otf"
+    dest: "/Users/{{ install_user }}/Library/Fonts/Droid Sans Mono for Powerline.otf"
+    state: link
+    force: true
+  # The font may not exist in the dotfiles repo; don't block on it.
+  failed_when: false

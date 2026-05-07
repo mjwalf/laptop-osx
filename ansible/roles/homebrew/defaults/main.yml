@@ -1,0 +1,54 @@
+---
+homebrew:
+  taps:
+    - aws/tap                       # for aws-sam-cli
+    - hashicorp/tap                 # for terraform (HashiCorp BSL)
+    - versent/homebrew-taps         # for saml2aws
+
+  # CLI formulae. Casks (GUI apps) live below in `casks`.
+  formulae:
+    # core unix
+    - bash
+    - coreutils
+    - curl
+    - git
+    - git-delta                     # git pager (replaces diff-so-fancy)
+    - gnupg                         # for signed commits
+    - openssl
+    - pinentry-mac                  # GPG passphrase prompt on macOS
+    - vim
+    - zsh
+
+    # modern CLI defaults
+    - bat
+    - eza
+    - fzf
+    - gh
+    - jq
+    - mas
+    - ripgrep
+
+    # languages
+    - go
+
+    # cloud / aws
+    - awscli
+    - aws-sam-cli
+    - saml2aws
+
+    # kubernetes
+    - helm
+    - kops
+    - kubernetes-cli
+    - kubetail
+
+    # infra
+    - hashicorp/tap/terraform
+
+  casks:
+    - 1password
+    - 1password-cli
+    - firefox
+    - iterm2
+    - rectangle
+    - visual-studio-code

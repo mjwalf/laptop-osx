@@ -1,39 +1,23 @@
 ---
-# Playbook file
-
-# - name: brew
-#   hosts: laptop
-#   roles:
-#     - brew
-#   tags:
-#     - brew
-
-# - name: casks
-#   hosts: laptop
-#   roles:
-#     - casks
-#   tags:
-#     - casks
-
-- name: dotfiles
+- name: Provision macOS laptop
   hosts: laptop
-  roles:
-    - dotfiles
-  tags:
-    - dotfiles
+  gather_facts: true
 
-- name: macos
-  hosts: laptop
+  pre_tasks:
+    - name: "Sanity check: install_user variable is set"
+      ansible.builtin.assert:
+        that:
+          - install_user is defined
+          - install_user | length > 0
+        fail_msg: "Run with -e install_user=$(whoami)"
+
   vars_files:
     - vars/macos.yml
-  roles: 
-    - macos
-  tags:
-    - macos
 
-# - name: dock
-#   hosts: laptop
-#   roles:
-#     - dock
-#   tags:
-#     - dock
+  roles:
+    - role: homebrew
+      tags: [homebrew, brew, casks]
+    - role: dotfiles
+      tags: [dotfiles]
+    - role: macos
+      tags: [macos]

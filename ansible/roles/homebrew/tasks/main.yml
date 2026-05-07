@@ -1,0 +1,51 @@
+---
+# Homebrew is expected to be installed already (bootstrap.sh handles it).
+# This role only manages taps, formulae and casks.
+
+- name: "Verify Homebrew is installed"
+  ansible.builtin.command: brew --version
+  register: brew_version
+  changed_when: false
+  failed_when: brew_version.rc != 0
+  check_mode: false
+
+- name: "Update Homebrew"
+  community.general.homebrew:
+    update_homebrew: true
+  tags:
+    - update
+
+- name: "Tap Homebrew repos"
+  community.general.homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ homebrew.taps }}"
+
+- name: "Install Homebrew formulae"
+  community.general.homebrew:
+    name: "{{ homebrew.formulae }}"
+    state: present
+  tags:
+    - formulae
+
+- name: "Install Homebrew casks"
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    accept_external_apps: true
+  environment:
+    HOMEBREW_CASK_OPTS: "--appdir=/Applications"
+  loop: "{{ homebrew.casks }}"
+  # Casks can fail when an app is already manually installed; don't block the
+  # rest of the playbook.
+  ignore_errors: true
+  tags:
+    - casks
+
+- name: "Upgrade installed packages"
+  community.general.homebrew:
+    upgrade_all: true
+  tags:
+    - upgrade
+  # Only run when explicitly requested (e.g. `--tags upgrade`).
+  when: "'upgrade' in ansible_run_tags"
